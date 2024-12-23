@@ -1,0 +1,50 @@
+<div class="form-container">
+  <form [formGroup]="affectationForm" (ngSubmit)="onSubmit()">
+    <h3>Affecter un Projet</h3>
+
+    <!-- Sélectionner un projet -->
+    <div class="form-group">
+      <label for="projet">Projet</label>
+      <select id="projet" formControlName="projetId" class="form-control">
+        <option value="" disabled selected>-- Sélectionnez un projet --</option>
+        <option *ngFor="let projet of projets" [value]="projet.nomProjet">{{ projet.nomProjet }}</option>
+      </select>
+      <div class="error" *ngIf="affectationForm.get('projetId')?.touched && affectationForm.get('projetId')?.invalid">
+        Veuillez sélectionner un projet.
+      </div>
+    </div>
+
+    <!-- Sélectionner un employé -->
+    <div class="form-group">
+      <label for="employe">Employé</label>
+      <select id="employe" formControlName="employeId" class="form-control">
+        <option value="" disabled selected>-- Sélectionnez un employé --</option>
+        <option *ngFor="let user of users" [value]="user.userName">{{ user.userName }}</option>        
+      </select>
+      <div class="error" *ngIf="affectationForm.get('employeId')?.touched && affectationForm.get('employeId')?.invalid">
+        Veuillez sélectionner un employé.
+      </div>
+    </div>
+
+    <!-- Poste occupé -->
+    <div class="form-group">
+      <label for="poste">Poste Occupé</label>
+      <input type="text" id="poste" formControlName="poste" class="form-control" placeholder="Ex: Chef de projet" />
+      <div class="error" *ngIf="affectationForm.get('poste')?.touched && affectationForm.get('poste')?.invalid">
+        Veuillez indiquer le poste occupé.
+      </div>
+    </div>
+
+    <!-- Activités -->
+    <div class="form-group">
+      <label for="activites">Activités</label>
+      <textarea id="activites" formControlName="activites" class="form-control" rows="4" placeholder="Décrivez les activités prévues..."></textarea>
+      <div class="error" *ngIf="affectationForm.get('activites')?.touched && affectationForm.get('activites')?.invalid">
+        Veuillez décrire les activités.
+      </div>
+    </div>
+
+    <!-- Bouton -->
+    <button type="submit" class="btn btn-primary" [disabled]="affectationForm.invalid">Affecter</button>
+  </form>
+</div>

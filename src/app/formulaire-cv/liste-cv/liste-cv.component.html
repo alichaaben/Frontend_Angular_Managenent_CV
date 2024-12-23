@@ -1,0 +1,59 @@
+
+<!-- CONTENT -->
+<section id="content">
+
+
+  <!-- MAIN -->
+  <main>
+
+      <div class="table-data">
+          <div class="order">
+              <div class="head">
+                  <h3>Liste des Expériences</h3>
+              </div>
+
+              <table>
+                  <thead>
+                  <tr>
+                      <th class="Radu1">ID</th>
+                      <th>Nom projet</th>
+                      <th>Poste Occupé</th>
+                      <th>Activités</th>
+
+                      <th class="Radu3">Actions</th>
+                  </tr>
+
+                  </thead>
+                  <tbody>
+
+                  <tr *ngFor="let exper of recuperExperience">
+                    <td>{{ exper.id }}</td>
+                    <td>{{ exper.titreExperience }}</td>
+                    <td>{{ exper.poste }}</td>
+                    <td>{{ exper.activites }}</td>
+                    <td>
+                      <button class="btn btn-warning" [routerLink]="['../update-experience', exper.id]" title="Modifier">
+                        <i class="far fa-pen"></i>
+                      </button>
+                      
+                        
+                        <button class="btn btn-danger" title="Supprimer" (click)="deleteExperience(exper.id)">
+                          <i class="fal fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+
+
+
+
+  </main>
+
+  <!-- MAIN -->
+</section>
+<!-- CONTENT -->

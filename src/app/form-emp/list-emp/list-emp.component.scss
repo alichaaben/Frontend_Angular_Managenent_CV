@@ -1,0 +1,135 @@
+.Radu1 {
+  border-radius: 13px 0 0 13px;
+}
+
+.Radu3 {
+  border-radius: 0 13px 13px 0;
+}
+
+#content {
+  main {
+    .user-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 4px;
+    }
+    
+    .table-data {
+      font-size: 18px;
+      // display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+      width: 100%;
+      color: var(--dark);
+
+      > div {
+        border-radius: 22px;
+        background: #ffffff;
+        padding: 24px;
+        overflow-x: auto;
+      }
+
+      .head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+
+        h3 {
+          margin-right: auto;
+          font-size: 22px;
+          font-weight: 600;
+        }
+      }
+
+      .order {
+        table {
+          width: 100%;
+          border-collapse: collapse;
+
+          th {
+            padding: 10px;
+            font-size: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--grey);
+            background: #184270;
+            color: #ffffff;
+          }
+
+          td {
+            padding: 16px 0;
+
+            &:first-child {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding-left: 6px;
+            }
+
+            .status {
+              font-size: 11.5px;
+              padding: 6px 16px;
+              color: var(--light);
+              border-radius: 20px;
+              font-weight: 700;
+
+              &.Paid {
+                background: #2ea631;
+              }
+
+              &.unpaid {
+                background: #d6081c;
+              }
+            }
+          }
+
+          tbody tr:hover {
+            background: #f4f7fa;;
+
+          }
+        }
+      }
+      .btn-warning {
+        margin-right: 10px;
+        font-size: 18px;
+        color: #454c51;
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+    .btn-danger {
+      font-size: 18px;
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+     }
+    }
+
+  }
+
+
+  @media screen and (max-width: 768px) {
+    width: calc(100% - 60px);
+    left: 200px;
+  }
+
+  @media screen and (max-width: 576px) {
+    main {
+      .table-data {
+        .head {
+          min-width: 420px;
+          text-align: center;
+          padding: 10px;
+        }
+
+        .order {
+          table {
+            min-width: 420px;
+          }
+        }
+      }
+    }
+  }
+}

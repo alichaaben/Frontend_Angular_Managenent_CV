@@ -1,0 +1,68 @@
+<div class="form-container">
+  <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
+
+    <h3>Expérience professionnelle</h3>
+
+
+    <!-- Nom complet -->
+    <!-- <div class="form-group">
+      <label for="fullName">Nom complet</label>
+      <input id="fullName" type="text" formControlName="fullName" class="form-control" placeholder="Entrez votre nom complet" />
+      <div class="error" *ngIf="cvForm.get('fullName')?.touched && cvForm.get('fullName')?.invalid ">
+        Nom complet requis (min. 3 caractères).
+      </div>
+    </div> -->
+
+    <!-- Email -->
+    <!-- <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" class="form-control" placeholder="Entrez votre email" />
+      <div class="error" *ngIf="cvForm.get('email')?.touched && cvForm.get('email')?.invalid && cvForm.get('email')?.hasError('pattern')">
+        Email valide requis.
+      </div>
+    </div> -->
+
+    <!-- Téléphone -->
+    <!-- <div class="form-group">
+      <label for="phone">Téléphone</label>
+      <input id="phone" type="text" formControlName="phone" class="form-control" placeholder="Entrez votre numéro de téléphone" />
+      <div class="error" *ngIf="cvForm.get('phone')?.touched && cvForm.get('phone')?.invalid">
+        Numéro valide requis (8-12 chiffres).
+      </div>
+    </div> -->
+    <!-- <hr> 
+<h4><u>***************************************************************</u></h4> -->
+    <br>
+    <!-- Projet -->
+    <div class="form-group">
+      <label for="projet">Projet</label>
+      <input id="projet" type="text" formControlName="project" class="form-control" placeholder="Nom de votre projet" />
+      <div class="error" *ngIf="cvForm.get('project')?.touched && cvForm.get('project')?.invalid">
+        Veuillez décrire le projet.
+      </div>
+    </div>
+
+    <!-- Poste occupé -->
+    <div class="form-group">
+      <label for="poste">Poste Occupé</label>
+      <input type="text" id="poste" formControlName="poste" class="form-control" placeholder="Ex: Chef de projet" />
+      <div class="error" *ngIf="cvForm.get('poste')?.touched && cvForm.get('poste')?.invalid">
+        Veuillez indiquer le poste occupé.
+      </div>
+    </div>
+
+    <!-- Activités -->
+    <div class="form-group">
+      <label for="activites">Activités</label>
+      <textarea id="activites" formControlName="activites" class="form-control" rows="4"
+        placeholder="Décrivez les activités prévues..."></textarea>
+      <div class="error" *ngIf="cvForm.get('activites')?.touched && cvForm.get('activites')?.invalid">
+        Veuillez décrire les activités.
+      </div>
+    </div>
+
+
+    <!-- Bouton -->
+    <button type="submit" class="btn btn-primary" [disabled]="cvForm.invalid">Soumettre</button>
+  </form>
+</div>

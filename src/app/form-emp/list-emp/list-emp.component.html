@@ -1,0 +1,57 @@
+<!-- CONTENT -->
+<section id="content">
+
+
+  <!-- MAIN -->
+  <main>
+
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Liste des Employés</h3>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th class="Radu1">Images</th>
+              <th>Nom complet</th>
+              <th>Email</th>
+              <th>Rôle</th>
+              <th>Téléphone</th>
+              <th class="Radu3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of recuperUser">
+              <td>
+                <img *ngIf="user.profileImage" [src]="imageBaseUrl + '/' + user.profileImage" alt="{{ user.userName }}"
+                  class="user-image">
+              </td>
+              <td>{{ user.userName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.roleName }}</td>
+              <td>{{ user.telephone }}</td>
+              <td>
+                <button class="btn btn-warning" [routerLink]="['../update-user', user.id]" title="Modifier">
+                  <i class="far fa-pen"></i>
+                </button>
+                <button class="btn btn-danger" title="Supprimer" (click)="deleteUser(user.id)">
+                  <i class="fal fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+
+
+
+  </main>
+
+  <!-- MAIN -->
+</section>
+<!-- CONTENT -->

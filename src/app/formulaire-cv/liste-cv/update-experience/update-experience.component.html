@@ -1,0 +1,41 @@
+<div class="form-container">
+    <form [formGroup]="cvForm" (ngSubmit)="onSubmit()">
+
+        <h3>Expérience professionnelle</h3>
+
+        <br>
+        <!-- Projet -->
+        <div class="form-group">
+            <label for="projet">Projet</label>
+            <input id="projet" type="text" formControlName="project" class="form-control"
+                placeholder="Nom de votre projet" />
+            <div class="error" *ngIf="cvForm.get('project')?.touched && cvForm.get('project')?.invalid">
+                Veuillez décrire le projet.
+            </div>
+        </div>
+
+        <!-- Poste occupé -->
+        <div class="form-group">
+            <label for="poste">Poste Occupé</label>
+            <input type="text" id="poste" formControlName="poste" class="form-control"
+                placeholder="Ex: Chef de projet" />
+            <div class="error" *ngIf="cvForm.get('poste')?.touched && cvForm.get('poste')?.invalid">
+                Veuillez indiquer le poste occupé.
+            </div>
+        </div>
+
+        <!-- Activités -->
+        <div class="form-group">
+            <label for="activites">Activités</label>
+            <textarea id="activites" formControlName="activites" class="form-control" rows="4"
+                placeholder="Décrivez les activités prévues..."></textarea>
+            <div class="error" *ngIf="cvForm.get('activites')?.touched && cvForm.get('activites')?.invalid">
+                Veuillez décrire les activités.
+            </div>
+        </div>
+
+
+        <!-- Bouton -->
+        <button type="submit" class="btn btn-primary" [disabled]="cvForm.invalid">Soumettre</button>
+    </form>
+</div>

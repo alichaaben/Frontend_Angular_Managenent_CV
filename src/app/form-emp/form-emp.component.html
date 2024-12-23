@@ -1,0 +1,65 @@
+<div class="form-container">
+  <form [formGroup]="employeForm" (ngSubmit)="onSubmit()">
+    <h3>Créer/Modifier un Employé</h3>
+
+
+    <!-- Nom complet -->
+    <div class="form-group">
+      <label for="profileImage">Image de profil:</label>
+      <input id="profileImage" type="file" (change)="onFileChange($event)" />
+    </div>
+
+    <!-- Nom complet -->
+    <div class="form-group">
+      <label for="fullName">Nom complet</label>
+      <input id="fullName" type="text" formControlName="fullName" class="form-control" placeholder="Entrez le nom complet" />
+      <div class="error" *ngIf="employeForm.get('fullName')?.touched && employeForm.get('fullName')?.invalid">
+        Nom complet requis (min. 3 caractères).
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" class="form-control" placeholder="Entrez l'email" />
+      <div class="error" *ngIf="employeForm.get('email')?.touched && employeForm.get('email')?.invalid">
+        Email valide requis.
+      </div>
+    </div>
+
+    <!-- Téléphone -->
+    <div class="form-group">
+      <label for="phone">Téléphone</label>
+      <input id="phone" type="text" formControlName="phone" class="form-control" placeholder="Entrez le numéro de téléphone" />
+      <div class="error" *ngIf="employeForm.get('phone')?.touched && employeForm.get('phone')?.invalid">
+        Numéro valide requis (8-12 chiffres).
+      </div>
+    </div>
+
+    <!-- Rôle -->
+    <div class="form-group">
+      <label for="role">Rôle</label>
+      <select id="role" formControlName="role" class="form-control">
+        <option value="" disabled selected>Choisissez un rôle</option>
+        <option value="ROLE_Admin">Admin</option>
+        <option value="ROLE_Manager">Manager</option>
+        <option value="ROLE_Employer">Employer</option>
+      </select>
+      <div class="error" *ngIf="employeForm.get('role')?.touched && employeForm.get('role')?.invalid">
+        Rôle requis.
+      </div>
+    </div>
+
+    <!-- Mot de passe -->
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input id="password" type="password" formControlName="password" class="form-control" placeholder="Entrez un mot de passe" />
+      <div class="error" *ngIf="employeForm.get('password')?.touched && employeForm.get('password')?.invalid">
+        Mot de passe requis (min. 6 caractères).
+      </div>
+    </div>
+
+    <!-- Bouton -->
+    <button type="submit" class="btn btn-primary" [disabled]="employeForm.invalid">Enregistrer</button>
+  </form>
+</div>

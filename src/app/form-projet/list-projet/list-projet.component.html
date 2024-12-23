@@ -1,0 +1,61 @@
+<!-- CONTENT -->
+<section id="content">
+  <!-- MAIN -->
+  <main>
+
+      <div class="table-data">
+          <div class="order">
+              <div class="head">
+                <h3>Liste des Projets</h3>
+              </div>
+
+              <table>
+                  <thead>
+                  <tr>
+                      <th class="Radu1">ID</th>
+                      <th>Nom</th>
+                      <th>Description</th>
+                      <th>Statut</th>
+                      <th>Date de début</th>
+                      <th>Date de fin</th>
+                      <th class="Radu3">Actions</th>
+                  </tr>
+
+                  </thead>
+                  <tbody>
+
+
+                    <tr *ngFor="let projet of recuperProjets">
+                      <td>{{ projet.id }}</td>
+                      <td>{{ projet.nomProjet }}</td>
+                      <td>{{ projet.description }}</td>
+                      <td>{{ projet.statut }}</td>
+                      <td>{{ projet.dateDebut | date: 'dd/MM/yyyy' }}</td>
+                      <td>{{ projet.dateFin | date: 'dd/MM/yyyy' }}</td>
+                    <td>
+                      <button class="btn btn-warning" [routerLink]="['../update-projet', projet.id]" title="Modifier">
+                        <i class="far fa-pen"></i>
+                      </button>
+                      
+                        
+                        <button class="btn btn-danger" title="Supprimer" (click)="deleteProjet(projet.id)">
+                          <i class="fal fa-trash-alt"></i>
+                        </button>
+                        
+                    </td> 
+                </tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+
+
+
+
+  </main>
+
+  <!-- MAIN -->
+</section>
+<!-- CONTENT -->
