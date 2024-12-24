@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -18,6 +18,12 @@ export class UsersService {
 
   public getUserById(id: string): Observable<UserMdl> {
     return this.http.get<UserMdl>(`${this.apiUrl}/${id}`);
+  }
+
+  //recupperer un seul user
+  public getAllByUserName(username: string): Observable<UserMdl> {
+    const params = new HttpParams().set('userName', username);
+    return this.http.get<UserMdl>(`${this.apiUrl}/filtre`, { params });
   }
 
   public addUser(user: UserMdl, profileImage: File | null): Observable<UserMdl> {

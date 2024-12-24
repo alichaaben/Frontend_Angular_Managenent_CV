@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { UserMdl } from 'src/app/model/User.model';
 import { AuthentificationService } from 'src/app/services/authentification.service';
+import { UsersService } from 'src/app/services/users.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +11,13 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-constructor(private authService:AuthentificationService){}
+
+  public recuperUser: UserMdl | null = null;
+public imageBaseUrl = `${environment.UrlImages}`;
+
+
+
+constructor(private authService:AuthentificationService,private usersService:UsersService){}
 
   @Input() collapsed = false;
   @Input() screenWidth = 0;
@@ -21,9 +30,18 @@ onResize(event: any) {
 this.checkCanShowSearchAsOverlay (window.innerWidth);
 }
 
-  ngOnInit(): void {
-    this.checkCanShowSearchAsOverlay(window.innerWidth);
-    }
+ngOnInit(): void {
+  this.checkCanShowSearchAsOverlay(window.innerWidth);
+
+  this.usersService.getAllByUserName(this.authService.username).subscribe({
+    next: (data: UserMdl) => {
+      this.recuperUser = data;
+    },
+    error: (err) => {
+      console.error('Erreur lors du chargement des utilisateurs :', err);
+    },
+  });
+}
 
   getHeadClass(): string {
     let styleClass = '';

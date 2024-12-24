@@ -27,14 +27,13 @@
     <div class="head-content-right">
       <div class="head-user-avatar-container">
         <div class="head-user-avatar" [cdkMenuTriggerFor]="userOverlay">
-          <img src="assets/users/Ali.png" alt="user" class="user-avatar">
+          <img *ngIf="recuperUser?.profileImage"  [src]="imageBaseUrl + '/' + recuperUser?.profileImage" alt="user" class="user-avatar">
           <div class="circle-indicator pulse"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
   <ng-template #searchOverlay>
     <div class="overlay overlay-search overlay-fall" cdklenu>
